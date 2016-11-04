@@ -99,8 +99,11 @@ makeBuddies();
 
 
 // Part 5
-var Strider = Rivendell.querySelectorAll(li);
-function beautifulStranger() {
+function beautifulStranger;{
+  var findStrider = document.querySelectorAll(li);
+    
+    if li.textContent === "Strider"
+
   // change the 'Strider' textnode to 'Aragorn'
 
 }
