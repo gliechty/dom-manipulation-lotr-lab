@@ -99,22 +99,26 @@ makeBuddies();
 
 
 // Part 5
-function beautifulStranger;{
-  var findStrider = document.querySelectorAll(li);
-    
-    if li.textContent === "Strider"
-
-  // change the 'Strider' textnode to 'Aragorn'
-
+function beautifulStranger () {
+  var findStrider = document.querySelectorAll("li");
+  findStrider.forEach(function(li) {
+    if (li.textContent === "Strider")
+      li.textContent = "Aragorn";
+  });
 }
+ 
+  // change the 'Strider' textnode to 'Aragorn'
 beautifulStranger(); 
 
 
 // Part 6
 
+
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
-
+  var shireHobbits = document.querySelector('ul');
+  var Rivendell = document.querySelectorAll("article")[1];
+  Rivendell.appendChild(shireHobbits);
 }
 leaveTheShire();
 
@@ -124,38 +128,79 @@ leaveTheShire();
 
 function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
+  var fellowship=document.createElement("div");
+  var Rivendell = document.querySelectorAll("article")[1];
   // add each hobbit and buddy one at a time to 'the-fellowship'
+  var allPpl=document.querySelectorAll("li");
+  console.log(allPpl);
+    for (i=0;i<allPpl.length;i++){
+      fellowship.appendChild(allPpl[i]);
+      alert("Your wolfpack += 1");
+    }
+  Rivendell.appendChild(fellowship);
   // after each character is added make an alert that they have joined your party
 }
-
+forgeTheFellowShip();
 
 // Part 8
-
-
 function theBalrog() {
+  var findGandalf = document.querySelectorAll("li");
+  for (var i =0; i<findGandalf.length; i++){
+    if (findGandalf[i].textContent === "Gandalf the Grey"){
+      findGandalf[i].textContent= "Gandalf the White";
+      findGandalf[i].style.background='white';
+      findGandalf[i].style.border='5px solid grey';    }
+  }
   // change the 'Gandalf' textNode to 'Gandalf the White'
   // apply style to the element
   // make the background 'white', add a grey border
 }
+theBalrog();
 
 
 // Part 9
 
 function hornOfGondor() {
+  alert ("Da horen git blawn. Boreimear iz ded");
+  var findBoromir = document.querySelectorAll("li");
+  for (var i=0; i<findBoromir.length; i++){
+    if (findBoromir[i].textContent === "Boromir") {
+      findBoromir[i].innerHTML='<strike>' + 'Boromir' + '<strike>';
+      findBoromir[i].setAttribute('id', 'Boromir');
+    }
+  }
+  var Boromir=document.getElementById('Boromir');
+  Boromir.parentNode.removeChild(Boromir);
   // pop up an alert that the horn of gondor has been blown
   // Boromir's been killed by the Uruk-hai!
   // put a linethrough on boromir's name
   // Remove Boromir from the Fellowship
 }
-
+hornOfGondor();
 
 // Part 10
 
 function itsDangerousToGoAlone(){
   // take Frodo and Sam out of the fellowship and move them to Mordor
   // add a div with an id of 'mount-doom' to Mordor
+  var findFrodoSam = document.querySelectorAll("li");
+  for (var i=0;i<findFrodoSam.length;i++){
+    if (findFrodoSam[i].textContent === "Frodo Baggins") {
+      findFrodoSam[i].setAttribute('id', 'Frodo');
+    } else if (findFrodoSam[i].textContent === "Samwise 'Sam' Gamgee") {
+      findFrodoSam[i].setAttribute('id', 'Sam');
+    }
+  }
+  var Frodo=document.getElementById('Frodo');
+  var FrodoSam=document.getElementById('Sam');
+  var Mordor=document.querySelectorAll('article')[2];
+  var mtDoom=document.createElement('section');
+  mtDoom.setAttribute('id', 'mtDoom');
+  mtDoom.appendChild(Frodo);
+  mtDoom.appendChild(Sam);
+  Mordor.appendChild(mtDoom);
 }
-
+itsDangerousToGoAlone();
 
 // Part 11
 
@@ -163,8 +208,24 @@ function weWantsIt() {
   // Create a div with an id of 'gollum' and add it to Mordor
   // Remove the ring from Frodo and give it to Gollum
   // Move Gollum into Mount Doom
+  var gollum=document.createElement('div');
+  gollum.setAttribute('id', 'gollum');
+  gollum.textContent="Gollum";
+  var mtDoom=document.getElementById('mtDoom');
+  mtDoom.appendChild(gollum);
+  var ring=getElementById('the-ring');
+  ring.parentNode.removeChild(ring);
+  gollum.appendChild(ring);
+
+
+
+//   var Frodo=getElementById('Frodo');
+//   var ring=querySelector('magic-imbued-jewelry');
+//   ring.parentNode.removeChild(ring);
+//   gollum.appendChild(ring);
 }
 
+weWantsIt();
 
 // Part 12
 
@@ -173,3 +234,5 @@ function thereAndBackAgain() {
   // remove all the baddies from the document
   // Move all the hobbits back to the shire
 }
+
+thereAndBackAgain();
